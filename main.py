@@ -23,6 +23,7 @@ def hello_world():
 def test():
     transferData = TransferData('sl.AkJmxjgaJaR4KUJ_Cj_Ub2xipQ9Xxp5sm28IfbgzDWt_KBSTL6VqY2ZpFTlP9S9WXf3T2mW_r89Na6gphhfwdN3K_kEjmpbVrDI2L3IOmi1yJ03KrsVc3EL1N285gYAHt4s6qO4')
     file_from = request.data
+    n+=1
     file_to = '/test_dropbox/video'+str(n)+'.mp4'
     # API v2
     transferData.upload_file(file_from, file_to)
