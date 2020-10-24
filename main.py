@@ -20,7 +20,7 @@ def hello_world():
     return render_template('index.html')
 @app.route('/postvideo',methods=['POST'])
 def postvideo():
-    transferData = TransferData('sl.AkPaHtcC9iGzEMoGjgUO26ZI8U6-K1BOpbjB_9Q3Cljwur6Hzj3UuAde6gRTMJoZTKqGLsvM4aXWI3CMI2QN6cnVAIo7A0xwvNnIVTe-cyialFwpK605uD1GsRg08GagBK5IJzA')
+    transferData = TransferData('OF6GR3NX3fQAAAAAAAAAAS8S3eIa51ubPKoTKeeDFCvbnEiAUawjecXHPi0aVwfA')
     file_from = request.data
     file_to = '/test_dropbox/video'+str(int(time.time()))+'.mp4'
     transferData.upload_file(file_from, file_to)
