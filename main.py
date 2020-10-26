@@ -3,11 +3,11 @@ import dropbox
 from flask_cors import CORS
 import time
 
-app = Flask(__name__)
+app = Flask(_name_)
 CORS(app)
 
 class TransferData:
-    def __init__(self, access_token):
+    def _init_(self, access_token):
         self.access_token = access_token
 
     def upload_file(self, file_from, file_to):
@@ -15,13 +15,15 @@ class TransferData:
         """
         dbx = dropbox.Dropbox(self.access_token)
         dbx.files_upload(file_from, file_to)
-@app.route('/')
-def hello_world():
-    return render_template('index.html')
-@app.route('/postvideo',methods=['POST'])
-def postvideo():
+@app.route('/<fileName>',methods=['POST'])
+def postvideo(fileName):
     transferData = TransferData('OF6GR3NX3fQAAAAAAAAAAS8S3eIa51ubPKoTKeeDFCvbnEiAUawjecXHPi0aVwfA')
     file_from = request.data
-    file_to = '/test_dropbox/video'+str(int(time.time()))+'.mp4'
-    transferData.upload_file(file_from, file_to)
-    return jsonify('success')
+    if(len(fileName)>0):
+        file_to = '/test_dropbox/'+fileName+'.mp4'
+        transferData.upload_file(file_from, file_to)
+        return jsonify('success')
+    else:
+        return jsonify('error')
+if _name_ == '_main_':
+    app.run()
