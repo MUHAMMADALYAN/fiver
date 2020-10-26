@@ -25,5 +25,3 @@ def postvideo(fileName):
         return jsonify('success')
     else:
         return jsonify('error')
-if _name_ == '_main_':
-    app.run()
