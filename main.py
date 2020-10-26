@@ -17,11 +17,14 @@ class TransferData:
         dbx.files_upload(file_from, file_to)
 @app.route('/<fileName>',methods=['POST'])
 def postvideo(fileName):
-    transferData = TransferData('OF6GR3NX3fQAAAAAAAAAAS8S3eIa51ubPKoTKeeDFCvbnEiAUawjecXHPi0aVwfA')
-    file_from = request.data
-    if(len(fileName)>0):
-        file_to = '/test_dropbox/'+fileName+'.mp4'
-        transferData.upload_file(file_from, file_to)
-        return jsonify('success')
-    else:
-        return jsonify('error')
+    try:
+        transferData = TransferData('OF6GR3NX3fQAAAAAAAAAAS8S3eIa51ubPKoTKeeDFCvbnEiAUawjecXHPi0aVwfA')
+        file_from = request.data
+        if(len(fileName)>0):
+            file_to = '/test_dropbox/'+fileName+'.mp4'
+            transferData.upload_file(file_from, file_to)
+            return jsonify('success')
+        else:
+            return jsonify('error')
+    except Exception as e:
+            return jsonify(e)
