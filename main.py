@@ -1,10 +1,9 @@
-import flask
 from flask import Flask, jsonify, render_template, request
 import dropbox
 from flask_cors import CORS
 import time
 
-app = Flask(_name_)
+app = Flask(__name__)
 CORS(app)
 
 class TransferData:
